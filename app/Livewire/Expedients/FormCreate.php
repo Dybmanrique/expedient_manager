@@ -18,7 +18,7 @@ class FormCreate extends Component
         $this->validate([
             'expedient_number' => 'required|unique:expedients,expedient_number',
             'name' => 'required|string',
-            'state' => 'required|in:en proceso,concluido,anulado,archivado',
+            'state' => 'required|in:en proceso,aprobado,anulado,archivado',
             'file' => 'required|file|max:10240', // máximo 10MB
         ]);
 

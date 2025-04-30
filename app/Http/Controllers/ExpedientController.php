@@ -21,7 +21,7 @@ class ExpedientController extends Controller
     {
         $expedient = Expedient::where('uuid', $request->uuid)->first();
 
-        $ruta = '\\\\desktop-9iqo8pm\\expedientes\\' . $expedient->path;
+        $ruta = '\\\\Deyber\\Ingresos\\' . $expedient->path;
         
         clearstatcache(true, $ruta);
         

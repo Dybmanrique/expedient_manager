@@ -23,7 +23,7 @@ class FormCreate extends Component
         ]);
 
         // Definir ruta de red compartida
-        $sharedPath = '\\\\desktop-9iqo8pm\\expedientes\\';
+        $sharedPath = '\\\\Deyber\\Ingresos\\';
 
         // Asegurarse de que existe
         if (!File::exists($sharedPath)) {

@@ -26,13 +26,28 @@
                         <a class="rounded bg-blue-800 p-2" href="{{ route('expedients.create') }}">Registrar expediente</a>
                     </div>
 
-                    <div id="myGrid" style="height: 500px"></div>
+                    <button onclick="exportToExcel()" class="rounded p-2 bg-blue-500">Exportar a Excel</button>
+                    {{-- <button onclick="printData()">Imprimir</button> --}}
+
+                    <button onclick="resetFilters()" class="rounded p-2 bg-gray-500">Limpiar filtros</button>
+
+                    </div>
+                    <div id="myGrid" class="p-6" style="height: 500px"></div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="{{asset('css/expedients/style.css')}}">
+@endpush
+
 @push('scripts')
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+<link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="{{asset('js/expedients/traslate_ag_grid.js')}}"></script>
     <script src="{{asset('js/expedients/index.js')}}"></script>
 @endpush

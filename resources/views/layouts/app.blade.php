@@ -14,9 +14,24 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
-        @stack('head') {{-- Por si necesitas empujar scripts o estilos al head --}}
+        @stack('styles')
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased"
+        x-data="{
+            theme: localStorage.getItem('theme') || 'auto',
+            updateTheme(theme) {
+                const isDark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.classList.toggle('dark', isDark);
+
+                // Emit custom event
+              window.dispatchEvent(new CustomEvent('theme-changed', { detail: { isDark } }));
+            }
+        }" x-init=" updateTheme(theme);
+        $watch('theme', value => {
+            localStorage.setItem('theme', value);
+            updateTheme(value);
+        });" x-cloak
+    >
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 

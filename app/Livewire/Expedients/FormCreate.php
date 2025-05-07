@@ -13,6 +13,16 @@ class FormCreate extends Component
     use WithFileUploads;
 
     public $expedient_number, $name, $state, $file;
+
+    public function updatedFile()
+    {
+        $filename = $this->file->getClientOriginalName();
+        $filename_without_extension = pathinfo($filename, PATHINFO_FILENAME);
+
+        $this->expedient_number = $filename_without_extension;
+        $this->name = $filename;
+    }
+
     public function save()
     {
         $this->validate([
@@ -23,7 +33,7 @@ class FormCreate extends Component
         ]);
 
         // Definir ruta de red compartida
-        $sharedPath = '\\\\Deyber\\Ingresos\\';
+        $sharedPath = '\\\\desktop-9iqo8pm\\expedientes\\';
 
         // Asegurarse de que existe
         if (!File::exists($sharedPath)) {

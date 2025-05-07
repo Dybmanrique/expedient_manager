@@ -22,5 +22,6 @@ Route::get('/dashboard', [ExpedientController::class, 'index'])->middleware(['au
 Route::get('/dashboard/data', [ExpedientController::class, 'data'])->middleware(['auth', 'verified'])->name('expedients.data');
 Route::get('/expedientes/descargar', [ExpedientController::class, 'download'])->middleware(['auth', 'verified'])->name('expedients.download');
 Route::get('/expedientes/registrar', [ExpedientController::class, 'create'])->middleware(['auth', 'verified'])->name('expedients.create');
+Route::post('/expedientes/eliminar', [ExpedientController::class, 'delete'])->middleware(['auth', 'verified'])->name('expedients.delete');
 
 require __DIR__.'/auth.php';
